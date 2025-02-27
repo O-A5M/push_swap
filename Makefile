@@ -1,11 +1,11 @@
-# push_swap variables
+# push_swap variables needed for compilation
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 NAME = push_swap
-SRC = push_swap.c
+SRC = push_swap.c ps_parsing.c
 
-# libft variables
+# libft variables for libft compilation
 
 LIBFT_D = libft
 LIBFT_N = libft.a

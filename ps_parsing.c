@@ -20,19 +20,26 @@ static int	ps_check_input(char *s)
 	return (1);
 }
 
-t_list	ps_input(char **input, int ac)
+t_list	*ps_input(char **input, int ac)
 {
 	int	i;
-	t_list	lst_input;
+	int	*val;
+	t_list	*lst_input;
 
 	i = 1;
 	lst_input = NULL;
+	val = malloc(sizeof(int *));
+	if (!val)
+		return (NULL);
 	if (!ps_dup_check(input, ac))
 		return (NULL);
 	while (i < ac)
 	{
 		if (ps_check_input(input[i]))
-			ft_lstadd_back(lst_input, ft_lstnew(atoi(input[i])));
+		{
+			*val = atoi(input[i]);
+			ft_lstadd_back(&lst_input, ft_lstnew(val));
+		}
 		else
 		{
 			ft_lstclear(&lst_input, clear_list);

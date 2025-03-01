@@ -3,12 +3,17 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 NAME = push_swap
-SRC = push_swap.c ps_parsing.c
+SRC = push_swap.c ps_parsing.c ps_parsing_utils.c
 
 # libft variables for libft compilation
 
 LIBFT_D = libft
 LIBFT_N = libft.a
+
+# ft_printf variables
+
+PRINTF_D = $(LIBFT_D)/ft_printf
+PRINTF_N = libftprintf.a
 
 # rules
 
@@ -18,7 +23,7 @@ $(LIBFT_N):
 	$(MAKE) -C $(LIBFT_D) all
 
 $(NAME):
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC) $(LIBFT_D)/$(LIBFT_N) $(PRINTF_D)/$(PRINTF_N) -o $(NAME)
 
 clean:
 	$(MAKE) -C $(LIBFT_D) clean

@@ -2,13 +2,18 @@
 
 int	main(int ac, char **av)
 {
-	t_list	stack_a;
+	t_list	*stack_a;
 
 	stack_a = ps_input(av, ac);
-	if (!stack)
+	if (!stack_a)
 	{
 		write(2, "error", 5);
 		return (1);
 	}
-
+	while (stack_a)
+	{
+		ft_printf("%d\n", stack_a->content);
+		stack_a = stack_a->next;
+	}
+	return (0);
 }

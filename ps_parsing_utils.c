@@ -15,7 +15,7 @@ int	ps_dup_check(char **s, int ac)
 			if (ft_strlen(s[i]) > ft_strlen(s[j]))
 				len = ft_strlen(s[i]);
 			else
-				len = ft_strlen(s(j));
+				len = ft_strlen(s[j]);
 			if (!ft_strncmp(s[i], s[j], len))
 				return (0);
 			j++;

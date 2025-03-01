@@ -6,5 +6,7 @@
 
 t_list	*ps_input(char **input, int ac);
 int		ps_dup_check(char **s, int ac);
+int		ps_check_input(char *s);
+void	clear_list(void	*node);
 
 #endif

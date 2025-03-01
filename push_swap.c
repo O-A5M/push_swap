@@ -15,5 +15,6 @@ int	main(int ac, char **av)
 		ft_printf("%d\n", stack_a->content);
 		stack_a = stack_a->next;
 	}
+	ft_lstclear(&stack_a, clear_list);
 	return (0);
 }

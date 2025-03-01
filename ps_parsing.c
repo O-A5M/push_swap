@@ -1,44 +1,26 @@
 #include "push_swap.h"
 
-static void	clear_list(void	*node)
-{
-	free(node);
-}
-
-static int	ps_check_input(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] <= '9' && s[i] >= '0')
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
 t_list	*ps_input(char **input, int ac)
 {
 	int	i;
-	int	*val;
+	int	*val_a;
+	int	val;
 	t_list	*lst_input;
 
 	i = 1;
 	lst_input = NULL;
-	val = malloc(sizeof(int *));
-	if (!val)
-		return (NULL);
 	if (!ps_dup_check(input, ac))
+		return (NULL);
+	val_a = malloc(sizeof(int *));
+	if (!val_a)
 		return (NULL);
 	while (i < ac)
 	{
 		if (ps_check_input(input[i]))
 		{
-			*val = atoi(input[i]);
-			ft_lstadd_back(&lst_input, ft_lstnew(val));
+			val = atoi(input[i]);
+			*val_a = val;
+			ft_lstadd_back(&lst_input, ft_lstnew(val_a));
 		}
 		else
 		{
@@ -47,5 +29,6 @@ t_list	*ps_input(char **input, int ac)
 		}
 		i++;
 	}
+	free(val_a);
 	return (lst_input);
 }

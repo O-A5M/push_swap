@@ -6,7 +6,7 @@ int	ps_dup_check(char **s, int ac)
 	int	j;
 	int	len;
 
-	i = 0;
+	i = 1;
 	while (i < ac)
 	{
 		j = i + 1;
@@ -21,6 +21,26 @@ int	ps_dup_check(char **s, int ac)
 			j++;
 		}
 		i++;
+	}
+	return (1);
+}
+
+void	clear_list(void	*node)
+{
+	free(node);
+}
+
+int	ps_check_input(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] <= '9' && s[i] >= '0')
+			i++;
+		else
+			return (0);
 	}
 	return (1);
 }

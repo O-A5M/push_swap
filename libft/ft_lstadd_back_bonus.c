@@ -11,18 +11,25 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
 
 	if (!lst || !new)
+	{
+		exit(10);
 		return ;
+	}
 	if (!*lst)
-		*lst = new;
+	*lst = new;
 	else
 	{
 		tmp = ft_lstlast(*lst);
+		
+//		printf("------%d-------\n", );
 		tmp -> next = new;
 	}
 }

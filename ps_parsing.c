@@ -11,7 +11,7 @@ t_list	*ps_input(char **input, int ac)
 	lst_input = NULL;
 	if (!ps_dup_check(input, ac))
 		return (NULL);
-	val_a = malloc(sizeof(int *));
+	val_a = malloc(sizeof(int));
 	if (!val_a)
 		return (NULL);
 	while (i < ac)
@@ -19,6 +19,7 @@ t_list	*ps_input(char **input, int ac)
 		if (ps_check_input(input[i]))
 		{
 			val = atoi(input[i]);
+			ft_printf("%d atoi %p\n", val, lst_input);
 			*val_a = val;
 			ft_lstadd_back(&lst_input, ft_lstnew(val_a));
 		}

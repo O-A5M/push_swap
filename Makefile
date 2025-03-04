@@ -1,7 +1,7 @@
 # push_swap variables needed for compilation
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 NAME = push_swap
 SRC = push_swap.c ps_parsing.c ps_parsing_utils.c
 
@@ -17,6 +17,8 @@ PRINTF_N = libftprintf.a
 
 # rules
 
+%.o: %.c
+	$(CC) $(CFLAGS) -c %.c -o %.o
 all: $(LIBFT_N) $(NAME)
 
 $(LIBFT_N):

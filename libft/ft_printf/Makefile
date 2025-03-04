@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 CC = cc
 SRC = ft_putnbr_base.c ft_putuns.c ft_putchar_fd_int.c ft_putnbr_fd_int.c ft_putstr_fd_int.c ft_printf.c ft_putadr.c
 OBJ = $(SRC:.c=.o)

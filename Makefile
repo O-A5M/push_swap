@@ -17,8 +17,6 @@ PRINTF_N = libftprintf.a
 
 # rules
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c %.c -o %.o
 all: $(LIBFT_N) $(NAME)
 
 $(LIBFT_N):

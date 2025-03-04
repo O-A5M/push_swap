@@ -28,8 +28,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	else
 	{
 		tmp = ft_lstlast(*lst);
-		
-//		printf("------%d-------\n", );
 		tmp -> next = new;
 	}
 }

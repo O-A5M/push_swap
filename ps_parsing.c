@@ -3,7 +3,6 @@
 t_list	*ps_input(char **input, int ac)
 {
 	int	i;
-	int	*val_a;
 	int	val;
 	t_list	*lst_input;
 
@@ -11,25 +10,19 @@ t_list	*ps_input(char **input, int ac)
 	lst_input = NULL;
 	if (!ps_dup_check(input, ac))
 		return (NULL);
-	val_a = malloc(sizeof(int));
-	if (!val_a)
-		return (NULL);
 	while (i < ac)
 	{
 		if (ps_check_input(input[i]))
 		{
 			val = atoi(input[i]);
-			ft_printf("%d atoi %p\n", val, lst_input);
-			*val_a = val;
-			ft_lstadd_back(&lst_input, ft_lstnew(val_a));
+			ft_lstadd_back(&lst_input, ft_lstnew(val));
 		}
 		else
 		{
-			ft_lstclear(&lst_input, clear_list);
+			ft_lstclear(&lst_input);
 			return (NULL);
 		}
 		i++;
 	}
-	free(val_a);
 	return (lst_input);
 }

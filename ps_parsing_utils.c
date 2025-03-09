@@ -1,26 +1,24 @@
 #include "push_swap.h"
 
-int	ps_dup_check(char **s, int ac)
+int	ps_check_stack(t_list *stack)
 {
-	int	i;
-	int	j;
-	int	len;
+	t_list	*current;
+	t_list	*next;
 
-	i = 0;
-	while (i < ac - 1)
+	current = stack;
+	while (current)
 	{
-		j = i + 1;
-		while (j < ac - 1)
+		if (current->content > 2147483647 ||
+			current->content < -2147483648)
+			return (0);
+		next = current->next;
+		while (next)
 		{
-			if (ft_strlen(s[i]) > ft_strlen(s[j]))
-				len = ft_strlen(s[i]);
-			else
-				len = ft_strlen(s[j]);
-			if (!ft_strncmp(s[i], s[j], len))
+			if ((current->content) == (next->content))
 				return (0);
-			j++;
+			next = next->next;
 		}
-		i++;
+		current = current->next;
 	}
 	return (1);
 }
@@ -37,7 +35,7 @@ int	ps_check_input(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] <= '9' && s[i] >= '0')
+		if ((s[i] <= '9' && s[i] >= '0') || s[i] == '-' || s[i] == '+')
 			i++;
 		else
 			return (0);

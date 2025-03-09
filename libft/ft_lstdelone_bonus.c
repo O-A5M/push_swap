@@ -14,14 +14,5 @@
 
 void	ft_lstdelone(t_list *lst)
 {
-	t_list *current;
-	t_list *next;
-
-	current = lst;
-	while (current)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
+		free(lst);
 }

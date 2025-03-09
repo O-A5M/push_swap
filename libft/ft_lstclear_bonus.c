@@ -14,16 +14,17 @@
 
 void	ft_lstclear(t_list **lst)
 {
-	t_list	*tmp;
+	t_list	*current;
+	t_list	*next;
 
 	if (!lst)
 		return ;
-	while (*lst)
+	current = *lst;
+	while (current)
 	{
-		tmp = (*lst)-> next;
-		ft_lstdelone(*lst);
-		*lst = tmp;
+		next = current->next;
+		ft_lstdelone(current);
+		current = next;
 	}
-	free(*lst);
 	*lst = NULL;
 }

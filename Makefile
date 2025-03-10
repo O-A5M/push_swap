@@ -3,7 +3,7 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3
 NAME = push_swap
-SRC = push_swap.c ps_parsing.c ps_parsing_utils.c
+SRC = push_swap.c ps_parsing.c ps_parsing_utils.c ps_moves.c
 
 # libft variables for libft compilation
 

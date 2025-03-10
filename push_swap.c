@@ -18,10 +18,11 @@ int	main(int ac, char **av)
 		ft_lstclear(&stack_a);
 		write(2, "error\n", 6);
 	}
+	reverse(&stack_a, 1);
 	head = stack_a;
 	while (head)
 	{
-		ft_printf("%d\n", head->content);
+		ft_printf("stack_a -> %d\n", head->content);
 		head = head->next;
 	}
 	ft_lstclear(&stack_a);

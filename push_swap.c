@@ -5,13 +5,20 @@ int	main(int ac, char **av)
 	t_list	*stack_a;
 	t_list	*head;
 
+	if (ac <= 1)
+		exit(0);
 	stack_a = ps_input(av, ac);
-	head = stack_a;
-	if (!stack_a)
+	// if (!stack_a)
+	// {
+	// 	write(2, "error", 5);
+	// 	return (1);
+	// }
+	if (!ps_check_stack(stack_a))
 	{
-		write(2, "error", 5);
-		return (1);
+		ft_lstclear(&stack_a);
+		write(2, "error\n", 6);
 	}
+	head = stack_a;
 	while (head)
 	{
 		ft_printf("%d\n", head->content);

@@ -35,3 +35,56 @@ void	sort_three(t_list **stack_a)
 	}
 }
 
+void	sort_four(t_list **stack_a, t_list **stack_b, int index)
+{
+	t_list	*tmp;
+	int		i;
+
+	tmp = *stack_a;
+	i = 0;
+	while (tmp->index != index)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	if (i < 2)
+	{
+		while (*stack_a != tmp)
+			rotate(stack_a, 1);
+	}
+	else
+	{
+		while (*stack_a != tmp)
+			reverse(stack_a, 1);
+	}
+	push(stack_b, stack_a, 0);
+	sort_three(stack_a);
+	push(stack_a, stack_b, 1);
+}
+
+void	sort_five(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*tmp;
+	int		i;
+
+	tmp = *stack_a;
+	i = 0;
+	while (tmp->index != 0)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	if (i < 3)
+	{
+		while (*stack_a != tmp)
+			rotate(stack_a, 1);
+	}
+	else
+	{
+		while (*stack_a != tmp)
+			reverse(stack_a, 1);
+	}
+	push(stack_b, stack_a, 0);
+	sort_four(stack_a, stack_b, 1);
+	push(stack_a, stack_b, 1);
+}

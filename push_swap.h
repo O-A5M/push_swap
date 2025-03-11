@@ -21,5 +21,7 @@ void	reverse_r(t_list **stack_a, t_list **stack_b);
 int		check_order(t_list *stack);
 void	index_stack(t_list **stack);
 void	sort_three(t_list **stack_a);
+void	sort_four(t_list **stack_a, t_list **stack_b, int index);
+void	sort_five(t_list **stack_a, t_list **stack_b);
 
 #endif

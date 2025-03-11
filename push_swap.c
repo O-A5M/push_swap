@@ -8,21 +8,12 @@ int	main(int ac, char **av)
 	if (ac <= 1)
 		exit(0);
 	stack_a = ps_input(av, ac);
-	// if (!stack_a)
-	// {
-	// 	write(2, "error", 5);
-	// 	return (1);
-	// }
-	if (!ps_check_stack(stack_a))
-	{
-		ft_lstclear(&stack_a);
-		write(2, "error\n", 6);
-	}
-	reverse(&stack_a, 1);
+	index_stack(&stack_a);
+	sort_three(&stack_a);
 	head = stack_a;
 	while (head)
 	{
-		ft_printf("stack_a -> %d\n", head->content);
+		ft_printf("%d\n", head->content);
 		head = head->next;
 	}
 	ft_lstclear(&stack_a);

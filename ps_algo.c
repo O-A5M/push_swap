@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	ft_sqrt(int i)
+static int	ft_sqrt(int i)
 {
 	int	factors;
 
@@ -10,7 +10,7 @@ int	ft_sqrt(int i)
 	return (factors);
 }
 
-int	get_index(t_list *list, int nb)
+static int	get_index(t_list *list, int nb)
 {
 	int	index;
 
@@ -23,7 +23,7 @@ int	get_index(t_list *list, int nb)
 	return(index);
 }
 
-void	from_b_to_a(t_list **stack_a, t_list **stack_b)
+static void	from_b_to_a(t_list **stack_a, t_list **stack_b)
 {
 	int		index;
 	int		i;

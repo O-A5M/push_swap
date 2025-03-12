@@ -1,14 +1,18 @@
 #include "push_swap.h"
 
-int	check_order(t_list *stack)
+int	check_order(t_list **stack)
 {
-	while (stack->next)
+	t_list	*tmp;
+
+	tmp = *stack;
+	while (tmp->next)
 	{
-		if (stack->content > (stack->next)->content)
+		if (tmp->content > (tmp->next)->content)
 			return (0);
-		stack = stack->next;
+		tmp = tmp->next;
 	}
-	return (1);
+	ft_lstclear(stack);
+	exit(0);
 }
 
 static void	set_to_zero(t_list **stack)

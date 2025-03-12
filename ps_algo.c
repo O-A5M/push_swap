@@ -10,39 +10,39 @@ int	ft_sqrt(int i)
 	return (factors);
 }
 
+int	get_index(t_list *list, int nb)
+{
+	int	index;
+
+	index = 0;
+	while (list && list->index != nb)
+	{
+		list = list->next;
+		index++;
+	}
+	return(index);
+}
+
 void	from_b_to_a(t_list **stack_a, t_list **stack_b)
 {
-	 t_list	*tmp;
 	int		index;
-	int		len;
 	int		i;
 
-	len = ft_lstsize(*stack_b);
-	i = len - 1;
-	while (i > 0)
+	i = ft_lstsize(*stack_b) - 1;
+	while (i >= 0)
 	{
-		tmp = *stack_b;
-		index = 0;
-		while (tmp && tmp->index != i)
+		index = get_index(*stack_b, i);
+		if (index <= ft_lstsize(*stack_b) / 2)
 		{
-			tmp = tmp->next;
-			index++;
-		}
-		// if (index < ft_lstsize(*stack_b) / 2)
-		// {
-			while (index > 0)
-			{
+			while ((*stack_b)->index != i)
 				rotate(stack_b, 0);
-				index--;
-			}
-			push (stack_a, stack_b, 1);
-		// }
-		// else /*if (index > ft_lstsize((*stack_b)) && index < ft_lstsize((*stack_b)) / 2)*/
-		// {
-		// 	while (*(stack_b) && (*stack_b)->index != i)
-		// 		reverse(stack_b, 0);
-		// 	push (stack_a, stack_b, 1);
-		// }
+		}
+		else
+		{
+			while ((*stack_b)->index != i)
+				reverse(stack_b, 0);
+		}
+		push (stack_a, stack_b, 1);
 		i--;
 	}
 }
@@ -51,14 +51,11 @@ void	sort_list(t_list **stack_a, t_list **stack_b)
 {
 	int		range;
 	int		i;
-	// t_list	*(*stack_b);
 
 	range = ft_sqrt(ft_lstsize(*stack_a));
-	// (*stack_b) = *stack_a;
 	i = 0;
 	while (*stack_a)
 	{
-		// (*stack_b) = *stack_a;
 		if ((*stack_a)->index < i)
 		{
 			push(stack_b, stack_a, 0);
@@ -70,15 +67,8 @@ void	sort_list(t_list **stack_a, t_list **stack_b)
 			push(stack_b, stack_a, 0);
 			i++;
 		}
-		// else if ((*stack_b)->index < i)
-		// {
-		// 	push(stack_b, stack_a, 0);
-		// 	rotate(stack_b, 0);
-		// 	i++;
-		// }
 		else
 			rotate(stack_a, 1);
-		// (*stack_b) = (*stack_b)->next;
 	}
 	from_b_to_a(stack_a, stack_b);
 }

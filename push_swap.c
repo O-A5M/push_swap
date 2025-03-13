@@ -1,6 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oakhmouc <oakhmouc@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/12 23:58:51 by oakhmouc          #+#    #+#             */
+/*   Updated: 2025/03/12 23:58:53 by oakhmouc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// hadchi kaaaamel makhedamch 
+#include "push_swap.h"
 
 int	main(int ac, char **av)
 {
@@ -13,13 +23,13 @@ int	main(int ac, char **av)
 	stack_a = ps_input(av, ac);
 	check_order(&stack_a);
 	index_stack(&stack_a);
-	if (ft_lstsize(stack_a) == 3)
+	if (ac == 3)
 		swap(&stack_a, 1);
-	if (ft_lstsize(stack_a) == 4)
+	else if (ac == 4)
 		sort_three(&stack_a);
-	else if (ft_lstsize(stack_a) == 5)
+	else if (ac == 5)
 		sort_four(&stack_a, &stack_b, 0);
-	else if (ft_lstsize(stack_a) == 6)
+	else if (ac == 6)
 		sort_five(&stack_a, &stack_b);
 	else
 		sort_list(&stack_a, &stack_b);

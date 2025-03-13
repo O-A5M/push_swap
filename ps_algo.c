@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_algo.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oakhmouc <oakhmouc@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/12 23:57:05 by oakhmouc          #+#    #+#             */
+/*   Updated: 2025/03/13 00:03:49 by oakhmouc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	ft_sqrt(int i)
@@ -20,7 +32,7 @@ static int	get_index(t_list *list, int nb)
 		list = list->next;
 		index++;
 	}
-	return(index);
+	return (index);
 }
 
 static void	from_b_to_a(t_list **stack_a, t_list **stack_b)

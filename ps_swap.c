@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   ps_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oakhmouc <oakhmouc@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 20:13:41 by oakhmouc          #+#    #+#             */
-/*   Updated: 2025/03/13 00:59:35 by oakhmouc         ###   ########.fr       */
+/*   Created: 2025/03/13 01:18:02 by oakhmouc          #+#    #+#             */
+/*   Updated: 2025/03/13 01:18:27 by oakhmouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	swap(t_list **stack, int nb)
 {
 	t_list	*tmp;
+	t_list	*tmp2;
 
-	if (!lst || !new)
-	{
-		exit(10);
+	if (!stack || !*stack || ft_lstsize(*stack) <= 1)
 		return ;
-	}
-	if (!*lst)
-		*lst = new;
-	else
-	{
-		tmp = ft_lstlast(*lst);
-		tmp -> next = new;
-	}
+	tmp = *stack;
+	tmp2 = tmp->next;
+	tmp->next = tmp2->next;
+	tmp2->next = tmp;
+	*stack = tmp2;
+	if (nb == 1)
+		ft_printf("sa\n");
+	else if (nb == 0)
+		ft_printf("sb\n");
+}
+
+void	swap_s(t_list **stack_a, t_list **stack_b)
+{
+	swap(stack_a, 2);
+	swap(stack_b, 2);
+	ft_printf("ss\n");
 }

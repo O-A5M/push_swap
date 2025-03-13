@@ -1,36 +1,37 @@
-# push_swap variables needed for compilation
+# push_swap variables
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -Wall -Werror -Wextra
 NAME = push_swap
 SRC = push_swap.c ps_parsing.c ps_parsing_utils.c ps_check_order.c ps_small_stack.c ps_algo.c ps_push.c ps_swap.c ps_reverse_rotate.c
 
-# libft variables for libft compilation
+OBJ = $(SRC:.c=.o)
 
+# libft variables
 LIBFT_D = libft
-LIBFT_N = libft.a
+LIBFT_N = $(LIBFT_D)/libft.a
 
 # ft_printf variables
-
 PRINTF_D = $(LIBFT_D)/ft_printf
-PRINTF_N = libftprintf.a
+PRINTF_N = $(PRINTF_D)/libftprintf.a
 
-# rules
-
-all: $(LIBFT_N) $(NAME)
+# Rules
+all: $(NAME)
 
 $(LIBFT_N):
 	$(MAKE) -C $(LIBFT_D) all
 
-$(NAME):
-	$(CC) $(CFLAGS) $(SRC) $(LIBFT_D)/$(LIBFT_N) $(PRINTF_D)/$(PRINTF_N) -o $(NAME)
+$(NAME): $(OBJ) $(LIBFT_N) $(PRINTF_N)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_N) $(PRINTF_N) -o $(NAME)
 
 clean:
 	$(MAKE) -C $(LIBFT_D) clean
-	rm -rf *.o
+	rm -rf $(OBJ)
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_D) fclean
-	rm -rf *.o $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: clean

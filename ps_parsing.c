@@ -16,13 +16,15 @@ static void	exit_error(char **input, t_list **lst)
 {
 	free_array(input);
 	ft_lstclear(lst);
-	write(2, "error\n", 6);
+	write(2, "Error\n", 6);
 	exit (1);
 }
 
-static void	exit_error_malloc(void)
+static void	exit_error_malloc(char **splite)
 {
-	write(2, "error\n", 6);
+	if (splite)
+		free_array(splite);
+	write(2, "Error\n", 6);
 	exit (1);
 }
 
@@ -38,14 +40,14 @@ t_list	*ps_input(char **input, int ac)
 	while (i < ac)
 	{
 		splite = ft_split(input[i], ' ');
-		if (!splite)
-			exit_error_malloc();
+		if (!splite || splite[0] == NULL)
+			exit_error_malloc(splite);
 		j = 0;
 		while (splite[j])
 		{
 			if (ps_check_input(splite[j]))
 				ft_lstadd_back(&lst, ft_lstnew(ft_atoi(splite[j])));
-			else if (!ps_check_input(splite[j]) || !ps_check_stack(lst))
+			else if (!ps_check_input(splite[j]))
 				exit_error(splite, &lst);
 			j++;
 		}

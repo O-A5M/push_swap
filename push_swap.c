@@ -12,7 +12,13 @@
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	error_message(void)
+{
+	write(2, "Error\n", 6);
+	exit (1);
+}
+
+int	main(int ac, char **agv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
@@ -20,16 +26,19 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	if (ac <= 1)
 		exit(0);
-	stack_a = ps_input(av, ac);
+	stack_a = ps_input(agv, ac);
+	if (!stack_a)
+		error_message();
+	ps_check_stack(stack_a);
 	check_order(&stack_a);
 	index_stack(&stack_a);
-	if (ac == 3)
+	if (ft_lstsize(stack_a) == 2)
 		swap(&stack_a, 1);
-	else if (ac == 4)
+	else if (ft_lstsize(stack_a) == 3)
 		sort_three(&stack_a);
-	else if (ac == 5)
+	else if (ft_lstsize(stack_a) == 4)
 		sort_four(&stack_a, &stack_b, 0);
-	else if (ac == 6)
+	else if (ft_lstsize(stack_a) == 5)
 		sort_five(&stack_a, &stack_b);
 	else
 		sort_list(&stack_a, &stack_b);

@@ -24,7 +24,6 @@ int	check_order(t_list **stack)
 		tmp = tmp->next;
 	}
 	ft_lstclear(stack);
-	write(2, "error\n", 6);
 	exit(0);
 }
 

@@ -35,3 +35,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: clean
+.PRECIOUS: *.o
